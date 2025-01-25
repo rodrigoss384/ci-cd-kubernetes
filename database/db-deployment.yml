@@ -1,0 +1,20 @@
+apiversion: v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: seu-usuario-dockerhub/imagem-sql:versao
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3306
+

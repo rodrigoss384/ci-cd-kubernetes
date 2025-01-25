@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-teste
+  labels:
+    app: app-teste
+spec:
+  containers:
+  - name: app-teste
+    image: httpd:latest
+    ports:
+    - containerPort: 80  
+    resources:
+      limits:
+        cpu: "0.5"
+      requests:
+        cpu: "0.3"  
