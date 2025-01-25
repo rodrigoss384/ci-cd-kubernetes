@@ -1,0 +1,26 @@
+stages:
+  - build
+
+build_stages:
+  stage: build
+  image: docker:20.10.16
+
+  services:
+    - docker:20.10.16-dind
+  
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+
+  before_script:
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
+  
+  script:
+    - docker build -t usuariodockerhub/app-cicd-dio:1.0 diretorio-aplicacao/.
+    - docker push usuariodockerhub/app-cicd-dio:1.0
+  
+
+  #!/bin/bash
+
+  kubectl apply -f deployment.yml
+
+  
